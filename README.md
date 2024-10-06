@@ -1,6 +1,6 @@
 # PulseChain Gas Price CLI
 
-This is a command-line interface (CLI) tool that fetches and displays real-time gas prices (in Gwei) on the PulseChain network. It calculates and shows the current, 5-minute, and hourly averages. The data updates every 5 seconds using the PulseChain RPC endpoint.
+This is a command-line interface (CLI) tool that fetches and displays real-time gas prices (in Gwei) on the PulseChain network. It calculates and shows the current, 5-minute, and hourly averages. The data updates every 5 seconds using G4MM4's PulseChain RPC endpoint (https://www.g4mm4.io/).
 
 ## Features
 - Fetches the current gas price from PulseChain.
@@ -45,7 +45,7 @@ Time                 Current Gas Price (Gwei)    5-Minute Avg (Gwei)    1-Hour A
 ```
 
 ## How It Works
-- The script uses Python's `requests` library to make JSON-RPC requests to the PulseChain RPC API.
+- The script uses Python's `requests` library to make JSON-RPC requests to G4MM4's PulseChain RPC API (https://www.g4mm4.io/).
 - Gas prices are fetched, stored, and averages are calculated in Gwei.
 - The terminal table is refreshed every 5 seconds with the latest values.
 
