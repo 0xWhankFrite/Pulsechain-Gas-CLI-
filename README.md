@@ -1,14 +1,14 @@
 # PulseChain Gas Price CLI
 
-This is a simple command-line interface (CLI) tool that fetches and displays the real-time gas prices (in Gwei) on the PulseChain network. The data is fetched from the PulseChain Gas API and is updated every 10 seconds.
+This is a command-line interface (CLI) tool that fetches and displays real-time gas prices (in Gwei) on the PulseChain network. It calculates and shows the current, 5-minute, and hourly averages. The data updates every 5 seconds using the PulseChain RPC endpoint.
 
 ## Features
-- Fetches gas prices (rapid, fast, standard, slow) from PulseChain.
-- Automatically updates the prices every 10 seconds.
-- Displays gas prices in Gwei in an easy-to-read CLI format.
+- Fetches the current gas price from PulseChain.
+- Calculates 5-minute and 1-hour averages.
+- Displays prices in Gwei in a live updating table format.
 
 ## Prerequisites
-- Node.js installed on your system.
+- Python 3 installed on your system.
 - Basic knowledge of the terminal/command line.
 
 ## Installation
@@ -23,49 +23,42 @@ Navigate to the project directory:
 cd pulsechain-gas-cli
 ```
 
-Install dependencies:
+Install dependencies (e.g., requests library):
 ```bash
-npm install
+pip install -r requirements.txt
 ```
 
 ## Usage
 
 Run the CLI:
 ```bash
-node gasPriceCli.js
+python gas_price_cli.py
 ```
 
-The gas prices will be fetched and displayed in your terminal, and they will automatically update every 10 seconds.
+The gas prices will be fetched and displayed in the terminal, updating every 5 seconds with both the current price and rolling averages.
 
 ## Example Output
-```yaml
-PulseChain Gas Prices:
-----------------------
-Rapid:    13.45 Gwei
-Fast:     10.87 Gwei
-Standard: 8.45 Gwei
-Slow:     5.32 Gwei
+```bash
+Time                 Current Gas Price (Gwei)    5-Minute Avg (Gwei)    1-Hour Avg (Gwei)
+2024-10-06 12:34:56  10.45                      9.89                   10.02
+2024-10-06 12:35:01  10.87                      10.12                  10.04
 ```
 
 ## How It Works
-- The script uses `axios` to make an HTTP request to the PulseChain gas price API.
-- It converts the gas prices from Wei to Gwei for readability.
-- The terminal output is updated every 10 seconds with the latest prices.
+- The script uses Python's `requests` library to make JSON-RPC requests to the PulseChain RPC API.
+- Gas prices are fetched, stored, and averages are calculated in Gwei.
+- The terminal table is refreshed every 5 seconds with the latest values.
 
 ## Customization
 
 ### Update Interval:
-By default, the gas prices are updated every 10 seconds. You can change this by modifying the interval in the script:
-```javascript
-await new Promise(resolve => setTimeout(resolve, 10000)); // Change 10000 (10 seconds) to your desired interval
+To change the update interval, modify the sleep time in the script:
+```python
+time.sleep(5)  # Change 5 (seconds) to your desired interval
 ```
 
 ## Dependencies
-- `axios`: Promise-based HTTP client for making API requests.
-- Node.js built-in `readline`: For handling terminal output updates.
+- `requests`: HTTP library for API calls.
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## Contributing
-Contributions, issues, and feature requests are welcome! Feel free to check the issues page or open a pull request.
